@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 
 MAINTAINER Boniface Kabaso <boniface@hashcode.zm>
 
-
+ENV CASSANDRA_VERSION 2.2.4
 
 RUN apt-get install -y software-properties-common curl && \
     add-apt-repository -y ppa:webupd8team/java && \
@@ -24,7 +24,7 @@ RUN echo 'deb http://www.apache.org/dist/cassandra/debian 22x main' >> /etc/apt/
 
 
 RUN apt-get update \
-	&& apt-get install -y cassandra="$CASSANDRA_VERSION" \
+	&& apt-get install -y cassandra="$CASSANDRA_VERSION"  \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV CASSANDRA_CONFIG /etc/cassandra
@@ -32,7 +32,6 @@ ENV CASSANDRA_CONFIG /etc/cassandra
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-VOLUME /var/lib/cassandra
 
 # 7000: intra-node communication
 # 7001: TLS intra-node communication
