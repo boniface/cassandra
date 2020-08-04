@@ -1,4 +1,4 @@
-# Apache Cassandra 4.0 Beta Docker Image
+# Apache Cassandra 4.0 Beta1 Docker Image
 
 These files are for building Apache Cassandra 4.0 Beta docker containers. With this  beta version, there will
  be no new features or breaking API changes in future Beta or GA builds. 
@@ -19,3 +19,23 @@ Notable features include
 5. Virtual tables 
  
 6. Java 11 Support 
+
+
+# Running the Container
+
+Create a bash script with your chosen CONTAINER NAME and YOUR LOCAL FOLDER as show below:
+```
+#!/bin/bash
+docker run  --name [CONTAINER NAME] \
+   -v [ YOUR LOCAL FOLDER]:/var/lib/cassandra \
+   -p 7000:7000 \
+   -p 7001:7001 \
+   -p 7199:7199 \
+   -p 9042:9042 \
+   -p 9160:9160 \
+   -p 9404:9404 \
+   -d bonifacekabaso/cassandra4:4.0-beta1
+```
+Then run your script 
+
+```sh YOURSCRIPT.sh```
